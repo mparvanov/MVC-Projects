@@ -1,0 +1,23 @@
+﻿@(Html.Kendo().MultiSelect()
+    .Name("multiselect")
+    .DataTextField("Name")
+    .DataValueField("Name")
+    .DataSource(source => source
+        .Custom()
+        .Type("aspnetmvc-ajax")
+        .ServerGrouping(true)
+        .ServerSorting(true)
+        .Sort(s => s.Add("Name"))
+        .Group(g => g.Add("TypeP", typeof(string)))
+        .Transport(transport => transport
+        .Read(read =>
+        {
+            read.Action("GetProducts", "Home");
+        }))
+        .Schema(s => s
+            .Data("Data")
+            .Model(m => m.Id("Id"))
+        )
+    )
+    .Placeholder("Select product...")
+)

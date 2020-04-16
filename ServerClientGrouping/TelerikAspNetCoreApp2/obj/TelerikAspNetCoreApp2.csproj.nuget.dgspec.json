@@ -1,0 +1,80 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\parvanov\\source\\repos\\TelerikAspNetCoreApp2\\TelerikAspNetCoreApp2\\TelerikAspNetCoreApp2.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\parvanov\\source\\repos\\TelerikAspNetCoreApp2\\TelerikAspNetCoreApp2\\TelerikAspNetCoreApp2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\parvanov\\source\\repos\\TelerikAspNetCoreApp2\\TelerikAspNetCoreApp2\\TelerikAspNetCoreApp2.csproj",
+        "projectName": "TelerikAspNetCoreApp2",
+        "projectPath": "C:\\Users\\parvanov\\source\\repos\\TelerikAspNetCoreApp2\\TelerikAspNetCoreApp2\\TelerikAspNetCoreApp2.csproj",
+        "packagesPath": "C:\\Users\\parvanov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\parvanov\\source\\repos\\TelerikAspNetCoreApp2\\TelerikAspNetCoreApp2\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\parvanov\\source\\repos\\TelerikAspNetCoreApp2\\NuGet.Config",
+          "C:\\Users\\parvanov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files (x86)\\Progress\\Telerik UI for ASP.NET Core R1 2020\\wrappers\\aspnetcore\\Binaries\\AspNet.Core": {},
+          "D:\\Nuget": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/nuget": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Telerik.UI.for.AspNet.Core.Trial": {
+              "target": "Package",
+              "version": "[2020.1.219, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300-preview-015048\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
