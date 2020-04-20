@@ -1,0 +1,80 @@
+﻿<div class="demo-section k-content">
+    <h4>Find a product</h4>
+
+    @(Html.Kendo().ComboBox()
+          .Name("products")
+          .Placeholder("Select product")
+          .DataTextField("ProductName")
+          .DataValueField("ProductID")
+          .HtmlAttributes(new { style = "width:100%;" })
+          .Filter("contains")
+          .AutoBind(false)
+          .MinLength(3)
+          .DataSource(source =>
+                  {
+              source.Read(read =>
+              {
+                  read.Action("ServerFiltering_GetProducts", "Home");
+              })
+              .ServerFiltering(true);
+          })
+    )
+
+    <input id="products1" style="width: 100%;" />
+
+
+    <script>
+        $(document).ready(function () {
+            $("#products1").kendoComboBox({
+                placeholder: "Select product",
+                dataTextField: "ProductName",
+                dataValueField: "ProductID",
+                filter: "contains",
+                autoBind: false,
+                minLength: 3,
+                dataSource: {
+                    type: "odata",
+                    serverFiltering: true,
+                    transport: {
+                        read: {
+                            url: "https://demos.telerik.com/kendo-ui/service/Northwind.svc/Products",
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+
+    <div class="demo-hint">Hint: type at least three characters. For example "che".</div>
+
+
+    <input id="products2" name="products" style="width:100%;" type="text" />
+    <script>
+        $(document).ready(function () {
+            $("#products2").kendoComboBox({
+                "dataSource": {
+                    "transport": {
+                        "read": {
+                            "url": "/Home/ServerFiltering_GetProducts",
+                            "data": function () {
+                                return kendo.ui.ComboBox.requestData(jQuery("#products"));
+                            }
+                        }
+                    },
+                    "serverFiltering": true,
+                    "schema": { "errors": "Errors" }
+                },
+                "dataTextField": "ProductName",
+                "dataValueField": "ProductID",
+                "filter": "contains",
+                "minLength": 3,
+                "autoBind": false,
+                "placeholder": "Select product"
+            });
+        });
+</script>
+
+
+
+</div>
