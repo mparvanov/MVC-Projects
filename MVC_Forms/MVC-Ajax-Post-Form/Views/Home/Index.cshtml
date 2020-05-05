@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model MVC_Ajax_Post_Form.Models.Comment
+
+@using (Html.BeginForm("Index", "Home"))
+{
+    @Html.ValidationSummary(true)
+    <legend class="AddAComment">Add a comment</legend>
+
+    <div class="commentformwrapper">
+
+        <div class="editor-text">
+            <span class="editor-label">User Name:</span>
+        </div>
+
+        <div class="editor-text">
+            @Html.EditorFor(m => m.UserName)
+        </div>
+
+        <div class="editor-text">
+            @Html.TextAreaFor(m => m.CommentText, new { rows = "6", cols = "23" })
+        </div>
+
+        <div class="editor-field">
+            @Html.HiddenFor(m => m.DateCreated)
+        </div>
+
+        <div class="editor-field">
+            @Html.HiddenFor(m => m.PostId)
+        </div>
+
+        <input type="submit" id="submit" value="Create" />
+
+    </div>
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('form').submit(function () {
+            var serializedForm = $(this).serialize();
+            $.ajax({
+                url: '@Url.Action("Index")',
+                type: "POST",
+                data: serializedForm,
+                success: function (result) {
+
+                    alert("success " + result.UserName);
+                },
+                error: function (result) {
+                    alert("Failed");
+                }
+
+            });
+            return false;
+        });
+    });
+
+</script>
