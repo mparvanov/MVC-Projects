@@ -1,18 +1,4 @@
-﻿@*@(Html.Kendo().Grid((IEnumerable<TelerikMvcApp1.Models.Product>)ViewBag.Products) //Bind the grid to ViewBag.Products
-        .Name("grid1")
-        .Columns(columns =>
-        {
-            // Create a column bound to the ProductID property.
-            columns.Bound(product => product.ProductID);
-            // Create a column bound to the ProductName property.
-            columns.Bound(product => product.ProductName);
-            // Create a column bound to the UnitsInStock property.
-            columns.Bound(product => product.UnitsInStock);
-        })
-        .Pageable() //Enable the paging.
-        .Sortable() //Enable the sorting.
-    )*@
-
+﻿
 
 @(Html.Kendo().Grid<TelerikMvcApp1.Models.ProductViewModel>()
     .Name("grid")
@@ -33,30 +19,17 @@
     .DataSource(dataSource => dataSource
         .Ajax()
         .PageSize(5)
-        .Events(events => events.Error("error_handler").RequestEnd("onRequestEnd"))
+        //.Events(events => events.Error("error_handler").RequestEnd("onRequestEnd"))
         .Model(model => model.Id(p => p.ProductID))
         .Create(update => update.Action("EditingInline_Create", "Grid"))
         .Read(read => read.Action("EditingInline_Read", "Grid"))
         .Update(update => update.Action("EditingInline_Update", "Grid"))
         .Destroy(update => update.Action("EditingInline_Destroy", "Grid"))
+        .Sort(s => s.Add(f => f.UnitPrice).Descending())
+        .ServerOperation(false)
     )
 )
 <script type="text/javascript">
-    function onRequestEnd(e) {
-        console.log("onRequestEnd " + e.type.toString());
-        if (e.type == "update" || e.type == "create") {
-            //get reference to the Grid widget
-            var grid = $("#grid").data("kendoGrid");
-            //sort Grid's dataSource
-            console.log("sort");
-            grid.dataSource.sort({ field: "UnitPrice", dir: "desc" });
-
-        }
-    }
-    ////get reference to the Grid widget
-    //var grid = $("#grid").data("kendoGrid");
-    ////sort Grid's dataSource
-    //grid.dataSource.sort({ field: "UnitsInStock", dir: "asc" });
 
     function error_handler(e) {    
         if (e.errors) {
